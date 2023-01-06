@@ -1,0 +1,153 @@
+Polygon errors:---------------
+
+Cancel listing error:
+
+ MetaMask - RPC Error: Internal JSON-RPC error. {code: -32603, message: 'Internal JSON-RPC error.', data: {…}}code: -32603data: {code: -32000, message: 'err: max fee per gas less than block base fee: add…0000 baseFee: 37196973760 (supplied gas 14197126)'}message: "Internal JSON-RPC error."[[Prototype]]: Object
+(anonymous) @ inpage.js:1
+(anonymous) @ inpage.js:17
+_runReturnHandlers @ inpage.js:17
+_processRequest @ inpage.js:17
+await in _processRequest (async)
+_handle @ inpage.js:17
+handle @ inpage.js:17
+_rpcRequest @ inpage.js:1
+(anonymous) @ inpage.js:1
+request @ inpage.js:1
+eval @ web3-provider.js?6870:65
+send @ web3-provider.js?6870:128
+eval @ json-rpc-provider.js?8679:572
+eval @ json-rpc-provider.js?8679:8
+__awaiter @ json-rpc-provider.js?8679:4
+perform @ json-rpc-provider.js?8679:549
+eval @ base-provider.js?4ba1:1550
+fulfilled @ base-provider.js?4ba1:5
+Promise.then (async)
+step @ base-provider.js?4ba1:7
+fulfilled @ base-provider.js?4ba1:5
+Promise.then (async)
+step @ base-provider.js?4ba1:7
+eval @ base-provider.js?4ba1:8
+__awaiter @ base-provider.js?4ba1:4
+estimateGas @ base-provider.js?4ba1:1545
+sendUncheckedTransaction @ json-rpc-provider.js?8679:203
+eval @ json-rpc-provider.js?8679:253
+fulfilled @ json-rpc-provider.js?8679:5
+Promise.then (async)
+step @ json-rpc-provider.js?8679:7
+eval @ json-rpc-provider.js?8679:8
+__awaiter @ json-rpc-provider.js?8679:4
+sendTransaction @ json-rpc-provider.js?8679:249
+eval @ index.js?b70c:323
+fulfilled @ index.js?b70c:5
+Promise.then (async)
+step @ index.js?b70c:7
+eval @ index.js?b70c:8
+__awaiter @ index.js?b70c:4
+eval @ index.js?b70c:312
+eval @ index.js?bee7:1526
+step @ tslib.es6.js?37cc:102
+eval @ tslib.es6.js?37cc:83
+asyncGeneratorStep @ _async_to_generator.mjs?e190:3
+_next @ _async_to_generator.mjs?e190:25
+Promise.then (async)
+asyncGeneratorStep @ _async_to_generator.mjs?e190:13
+_next @ _async_to_generator.mjs?e190:25
+eval @ _async_to_generator.mjs?e190:32
+eval @ _async_to_generator.mjs?e190:21
+_polyCancelList @ index.js?bee7:1539
+polyCancelList @ index.js?bee7:1509
+onClick @ BuyCard.js?1c80:111
+onPress @ button.js?7546:1
+triggerPressEnd @ module.js?6cc0:235
+onPointerUp @ module.js?6cc0:388
+index.js?bee7:1526 err Internal JSON-RPC error.
+
+
+binance errors:-----------------
+
+Relist error:
+
+inpage.js:1 
+ MetaMask - RPC Error: Internal JSON-RPC error. 
+{code: -32603, message: 'Internal JSON-RPC error.', data: {…}}
+code
+: 
+-32603
+data
+: 
+code
+: 
+-32005
+message
+: 
+"limit exceeded"
+[[Prototype]]
+: 
+Object
+message
+: 
+"Internal JSON-RPC error."
+[[Prototype]]
+: 
+Object
+(anonymous)	@	inpage.js:1
+(anonymous)	@	inpage.js:17
+_runReturnHandlers	@	inpage.js:17
+_processRequest	@	inpage.js:17
+await in _processRequest (async)		
+_handle	@	inpage.js:17
+handle	@	inpage.js:17
+_rpcRequest	@	inpage.js:1
+(anonymous)	@	inpage.js:1
+request	@	inpage.js:1
+eval	@	web3-provider.js?6870:65
+send	@	web3-provider.js?6870:128
+eval	@	json-rpc-provider.js?8679:572
+eval	@	json-rpc-provider.js?8679:8
+__awaiter	@	json-rpc-provider.js?8679:4
+perform	@	json-rpc-provider.js?8679:549
+eval	@	base-provider.js?4ba1:1723
+fulfilled	@	base-provider.js?4ba1:5
+Promise.then (async)		
+step	@	base-provider.js?4ba1:7
+fulfilled	@	base-provider.js?4ba1:5
+Promise.then (async)		
+step	@	base-provider.js?4ba1:7
+eval	@	base-provider.js?4ba1:8
+__awaiter	@	base-provider.js?4ba1:4
+getLogs	@	base-provider.js?4ba1:1720
+eval	@	base-provider.js?4ba1:916
+eval	@	base-provider.js?4ba1:876
+fulfilled	@	base-provider.js?4ba1:5
+Promise.then (async)		
+step	@	base-provider.js?4ba1:7
+eval	@	base-provider.js?4ba1:8
+__awaiter	@	base-provider.js?4ba1:4
+poll	@	base-provider.js?4ba1:809
+eval	@	base-provider.js?4ba1:1020
+inpage.js:1 
+ MetaMask - RPC Error: Internal JSON-RPC error. 
+{code: -32603, message: 'Internal JSON-RPC error.', data: {…}}
+code
+: 
+-32603
+data
+: 
+{code: -32005, message: 'limit exceeded'}
+message
+: 
+"Internal JSON-RPC error."
+[[Prototype]]
+: 
+Object
+
+
+collection loading error:
+
+Access to XMLHttpRequest at 'https://infura-ipfs.io/ipfs/bafybeifpbijmf75qelj6us7waxjzqp5dl4axeq3zqkidp2bi6mm7i4lzqi/1.json' from origin 'http://localhost:3000' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.
+infura-ipfs.io/ipfs/bafybeifpbijmf75qelj6us7waxjzqp5dl4axeq3zqkidp2bi6mm7i4lzqi/1.json:1 
+        
+      
+        
+    
+
