@@ -1,0 +1,83 @@
+Switch to Polygon function: ✔️
+Cancel Listing function:❌
+
+Error:1 
+
+inpage.js:1 
+        
+       MetaMask - RPC Error: Internal JSON-RPC error. {code: -32603, message: 'Internal JSON-RPC error.', data: {…}}code: -32603data: {code: -32000, message: 'execution reverted'}message: "Internal JSON-RPC error."[[Prototype]]: Object
+(anonymous) @ inpage.js:1
+(anonymous) @ inpage.js:17
+_runReturnHandlers @ inpage.js:17
+_processRequest @ inpage.js:17
+await in _processRequest (async)
+_handle @ inpage.js:17
+handle @ inpage.js:17
+_rpcRequest @ inpage.js:1
+(anonymous) @ inpage.js:1
+request @ inpage.js:1
+eval @ web3-provider.js?6870:65
+send @ web3-provider.js?6870:128
+eval @ json-rpc-provider.js?8679:572
+eval @ json-rpc-provider.js?8679:8
+__awaiter @ json-rpc-provider.js?8679:4
+perform @ json-rpc-provider.js?8679:549
+eval @ base-provider.js?4ba1:1550
+fulfilled @ base-provider.js?4ba1:5
+Promise.then (async)
+step @ base-provider.js?4ba1:7
+fulfilled @ base-provider.js?4ba1:5
+Promise.then (async)
+step @ base-provider.js?4ba1:7
+eval @ base-provider.js?4ba1:8
+__awaiter @ base-provider.js?4ba1:4
+estimateGas @ base-provider.js?4ba1:1545
+sendUncheckedTransaction @ json-rpc-provider.js?8679:203
+eval @ json-rpc-provider.js?8679:253
+fulfilled @ json-rpc-provider.js?8679:5
+Promise.then (async)
+step @ json-rpc-provider.js?8679:7
+eval @ json-rpc-provider.js?8679:8
+__awaiter @ json-rpc-provider.js?8679:4
+sendTransaction @ json-rpc-provider.js?8679:249
+eval @ index.js?b70c:323
+fulfilled @ index.js?b70c:5
+Promise.then (async)
+step @ index.js?b70c:7
+eval @ index.js?b70c:8
+__awaiter @ index.js?b70c:4
+eval @ index.js?b70c:312
+eval @ index.js?bee7:1587
+step @ tslib.es6.js?37cc:102
+eval @ tslib.es6.js?37cc:83
+asyncGeneratorStep @ _async_to_generator.mjs?26c9:3
+_next @ _async_to_generator.mjs?26c9:25
+Promise.then (async)
+asyncGeneratorStep @ _async_to_generator.mjs?26c9:13
+_next @ _async_to_generator.mjs?26c9:25
+eval @ _async_to_generator.mjs?26c9:32
+eval @ _async_to_generator.mjs?26c9:21
+_polyCancelList @ index.js?bee7:1600
+polyCancelList @ index.js?bee7:1570
+onClick @ BuyCard.js?1c80:111
+onPress @ button.js?7546:1
+triggerPressEnd @ module.js?6cc0:235
+onPointerUp @ module.js?6cc0:388
+index.js?bee7:1587 err cannot estimate gas; transaction may fail or may require manual gas limit [ See: https://links.ethers.org/v5-errors-UNPREDICTABLE_GAS_LIMIT ] (reason="execution reverted", method="estimateGas", transaction={"from":"0x8145E572eD429e4cb38150C754C9c61Fd7CE21E6","gasPrice":{"type":"BigNumber","hex":"0x12a05f2000"},"to":"0x33B3E5cF732CeE31a5f59243a54C490b90e9997F","data":"0x813d2ad800000000000000000000000000000000000000000000000000000000000000020000000000000000000000003dea30e978e8d042fda3ff468665b0fd36720fbb","accessList":null}, error={"code":-32603,"message":"Internal JSON-RPC error.","data":{"code":-32000,"message":"execution reverted"},"stack":"{\n  \"code\": -32603,\n  \"message\": \"Internal JSON-RPC error.\",\n  \"data\": {\n    \"code\": -32000,\n    \"message\": \"execution reverted\"\n  },\n  \"stack\": \"Error: Internal JSON-RPC error.\\n    at new r (chrome-extension://ejbalbakoplchlghecdalmeeeajnimhm/common-2.js:1:322950)\\n    at i (chrome-extension://ejbalbakoplchlghecdalmeeeajnimhm/common-2.js:1:325706)\\n    at Object.internal (chrome-extension://ejbalbakoplchlghecdalmeeeajnimhm/common-2.js:1:326316)\\n    at c (chrome-extension://ejbalbakoplchlghecdalmeeeajnimhm/background-0.js:22:17293)\\n    at chrome-extension://ejbalbakoplchlghecdalmeeeajnimhm/background-0.js:22:18322\\n    at async chrome-extension://ejbalbakoplchlghecdalmeeeajnimhm/common-6.js:19:37692\"\n}\n  at new r (chrome-extension://ejbalbakoplchlghecdalmeeeajnimhm/common-2.js:1:322950)\n  at i (chrome-extension://ejbalbakoplchlghecdalmeeeajnimhm/common-2.js:1:325706)\n  at Object.internal (chrome-extension://ejbalbakoplchlghecdalmeeeajnimhm/common-2.js:1:326316)\n  at c (chrome-extension://ejbalbakoplchlghecdalmeeeajnimhm/background-0.js:22:17293)\n  at chrome-extension://ejbalbakoplchlghecdalmeeeajnimhm/background-0.js:22:18322\n  at async chrome-extension://ejbalbakoplchlghecdalmeeeajnimhm/common-6.js:19:37692"}, code=UNPREDICTABLE_GAS_LIMIT, version=providers/5.7.2)     
+
+
+Mint/List function: ✔️
+Mint function: ✔️
+Relist function: ✔️
+
+NFT collection tab rendering: ❌
+
+Error: index.js?dd68:224 
+        
+Uncaught (in promise) Error: call revert exception [ See: https://links.ethers.org/v5-errors-CALL_EXCEPTION ] (method="totalSupply()", data="0x", errorArgs=null, errorName=null, errorSignature=null, reason=null, code=CALL_EXCEPTION, version=abi/5.7.0)
+at Logger.makeError (index.js?dd68:224:1)
+at Logger.throwError (index.js?dd68:233:1)
+at Interface.decodeFunctionResult (interface.js?1df7:345:1)
+at Contract.eval (index.js?b70c:293:1)
+at Generator.next (<anonymous>)
+at fulfilled (index.js?b70c:5:43)

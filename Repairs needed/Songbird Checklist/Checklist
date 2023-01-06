@@ -1,0 +1,64 @@
+Switch to songbird function: ✔️
+
+Cancel function: ✔️
+
+My NFT portal error: ❌
+
+Error 1:            
+
+Unhandled Runtime Error
+    
+TypeError: Cannot read properties of undefined(reading 'data')
+
+    Source
+    pages\portal.js(242: 29) @eval
+-------
+
+
+Error 2:      
+
+Access to XMLHttpRequest at 'https://infura-ipfs.io/ipfs/bafybeiadpnmaoueppgkxdobbcrszdnsspzf45rkqoz34773gon5ygcdp3u/1.json' from origin 'http://localhost:3000' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.
+    infura - ipfs.io / ipfs / bafybeiadpnmaoueppgkxdobbcrszdnsspzf45rkqoz34773gon5ygcdp3u / 1.json: 1 
+        
+      Failed to load resource: net:: ERR_FAILED
+ 
+        
+       Access to XMLHttpRequest at 'https://infura-ipfs.io/ipfs/bafybeiadpnmaoueppgkxdobbcrszdnsspzf45rkqoz34773gon5ygcdp3u/2.json' from origin 'http://localhost:3000' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.
+
+ReList for Sale function: ❌
+     stuck on loading after approval monsters market and not listing,
+     sometimes list tx signing doesnt show up
+
+
+
+Mint/List function: ✔️
+
+Mint function: ✔️
+
+after minting and refreshed to marketplace marketplace is frozen and fix is to refresh again not sure why its doing that...
+
+NFTCollection tab rendering: ❌
+ Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'data')
+    at eval (collection.js?1940:341:30)
+collection:1 
+        
+       Access to XMLHttpRequest at 'https://infura-ipfs.io/ipfs/bafybeiadpnmaoueppgkxdobbcrszdnsspzf45rkqoz34773gon5ygcdp3u/13.json' from origin 'http://localhost:3000' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.
+collection.js?1940:334 Object
+infura-ipfs.io/ipfs/bafybeiadpnmaoueppgkxdobbcrszdnsspzf45rkqoz34773gon5ygcdp3u/13.json:1 
+        
+       Failed to load resource: net::ERR_FAILED
+collection:1 
+        
+       Access to XMLHttpRequest at 'https://infura-ipfs.io/ipfs/bafybeiadpnmaoueppgkxdobbcrszdnsspzf45rkqoz34773gon5ygcdp3u/14.json' from origin 'http://localhost:3000' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.
+collection.js?1940:334 Object
+infura-ipfs.io/ipfs/bafybeiadpnmaoueppgkxdobbcrszdnsspzf45rkqoz34773gon5ygcdp3u/14.json:1 
+        
+      
+        
+        Failed to load resource: net::ERR_FAILED
+2collection.js?1940:341 
+        
+       Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'data')
+    at eval (collection.js?1940:341:30)
+collection.js?1940:393 nftArray Array(0)
+       
