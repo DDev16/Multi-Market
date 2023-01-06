@@ -45,10 +45,10 @@ export var bnbrpc = "https://bsc-dataseed2.defibit.io";
 /*
 Polygon Mainnet
 */
-export var polyresell = "0xc7A30d15Fe24032b8b700c0dCf71400Df3b92970";
-export var polynftcol = "0x382D4B1e396c6666640Cc628B89Ee0f5Aec14994";
-export var polynft = "0x51A1c8956c038699423ab7A0726d7311c81f6F8f";
-export var polymarket = "0x33B3E5cF732CeE31a5f59243a54C490b90e9997F";
+export var polyresell = "0x7dBFb04F82909e209a00e3628D5CAA17f3D1eb69";
+export var polynftcol = "0x0f9D7f0D54591a6Cab41ee8BE340Db7e3e8a5E01";
+export var polynft = "0x26987de868b59704725f41aF4fBa5C74f17aF94A";
+export var polymarket = "0x8eDAAf08fdb916bdf26D366890d3435652131292";
 export var polyrpc = "https://polygon.llamarpc.com";
 
 
