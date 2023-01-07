@@ -328,6 +328,7 @@ const Collection = () => {
             var cleanUri = value.replace(
               "ipfs://",
               "https://ipfs.io/ipfs/"
+              
             );
             // console.log("cleanUri1", cleanUri);
             let metadata = axios.get(cleanUri).catch(function (error) {

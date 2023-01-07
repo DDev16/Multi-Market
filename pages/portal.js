@@ -229,7 +229,7 @@ export default function Sell() {
           if (value) {
             var cleanUri = value.replace(
               "ipfs://",
-              "https://infura-ipfs.io/ipfs/"
+              "https://ipfs.io/ipfs/"
             );
             let metadata = axios.get(cleanUri).catch(function (error) {
               console.log(error.toJSON());

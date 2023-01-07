@@ -353,7 +353,7 @@ export default function Home() {
               let str = value;
               let cleanUri = str.replace(
                 "ipfs://",
-                "https://infura-ipfs.io/ipfs/"
+                "https://ipfs.io/ipfs/"
               );
               // console.log(cleanUri);
               let metadata = axios.get(cleanUri).catch(function (error) {
@@ -367,7 +367,7 @@ export default function Home() {
               var desc = value.data.description;
               let image = rawImg.replace(
                 "ipfs://",
-                "https://infura-ipfs.io/ipfs/"
+                "https://ipfs.io/ipfs/"
               );
               const price = market.getPrice(token);
               Promise.resolve(price).then((_hex) => {
