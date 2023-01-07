@@ -6,18 +6,72 @@ import Resell from "../engine/Resell.json";
 import NFTCollection from "../engine/NFTCollection.json";
 import NFT from "../engine/NFT.json";
 import Market from "../engine/Market.json";
-import { polyTest, ethTest, bscTest, flrChain, polyChain, ethChain, bscChain } from "../engine/chainchange";
-import { Card, Button, Input, Col, Row, Spacer, Container, Text, Grid, } from "@nextui-org/react";
+import {
+  polyTest,
+  ethTest,
+  bscTest,
+  flrChain,
+  polyChain,
+  ethChain,
+  bscChain,
+} from "../engine/chainchange";
+import {
+  Card,
+  Button,
+  Input,
+  Col,
+  Row,
+  Spacer,
+  Container,
+  Text,
+  Grid,
+} from "@nextui-org/react";
 import axios from "axios";
 import "sf-font";
 import Web3 from "web3";
 import detectEthereumProvider from "@metamask/detect-provider";
-import { mmnft, mmresell, mmnftcol, mmrpc, mmmarket } from "../engine/configuration";
-import { goenft, goeresell, goenftcol, goerpc, goemarket } from "../engine/configuration";
-import { hhnft, hhresell, hhnftcol, hhrpc, hhmarket } from "../engine/configuration";
-import { bsctnft, bsctresell, bsctnftcol, bsctrpc, bsctmarket } from "../engine/configuration";
-import { bnbnft, bnbresell, bnbnftcol, bnbrpc, bnbmarket } from "../engine/configuration";
-import { polynft, polyresell, polynftcol, polyrpc, polymarket } from "../engine/configuration";
+import {
+  mmnft,
+  mmresell,
+  mmnftcol,
+  mmrpc,
+  mmmarket,
+} from "../engine/configuration";
+import {
+  goenft,
+  goeresell,
+  goenftcol,
+  goerpc,
+  goemarket,
+} from "../engine/configuration";
+import {
+  hhnft,
+  hhresell,
+  hhnftcol,
+  hhrpc,
+  hhmarket,
+} from "../engine/configuration";
+import {
+  bsctnft,
+  bsctresell,
+  bsctnftcol,
+  bsctrpc,
+  bsctmarket,
+} from "../engine/configuration";
+import {
+  bnbnft,
+  bnbresell,
+  bnbnftcol,
+  bnbrpc,
+  bnbmarket,
+} from "../engine/configuration";
+import {
+  polynft,
+  polyresell,
+  polynftcol,
+  polyrpc,
+  polymarket,
+} from "../engine/configuration";
 import image from "../images/image.jpg";
 import LoadingPopup from "../components/LoadingPopup";
 import ListCard from "../components/ListCard";
@@ -162,9 +216,9 @@ export default function Sell() {
       var nftresell = mmresell;
     } else if (connected.chainId == bsct) {
       var nftresell = bsctresell;
-    }  else if (connected.chainId == bnb) {
+    } else if (connected.chainId == bnb) {
       var nftresell = bnbresell;
-    }  else if (connected.chainId == poly) {
+    } else if (connected.chainId == poly) {
       var nftresell = polyresell;
     }
     getNftResell(nftresell);
@@ -227,10 +281,7 @@ export default function Sell() {
         const Uri = Promise.resolve(rawUri);
         const getUri = Uri.then((value) => {
           if (value) {
-            var cleanUri = value.replace(
-              "ipfs://",
-              "https://ipfs.io/ipfs/"
-            );
+            var cleanUri = value.replace("ipfs://", "https://ipfs.io/ipfs/");
             let metadata = axios.get(cleanUri).catch(function (error) {
               console.log(error.toJSON());
             });
@@ -395,7 +446,11 @@ export default function Sell() {
                 >
                   <img src="polygonwhite.png" width={"100px"} />
                 </Button>
-                <Button size="sm" onPress={bscChain} css={{ marginRight: "$2" }}>
+                <Button
+                  size="sm"
+                  onPress={bscChain}
+                  css={{ marginRight: "$2" }}
+                >
                   <img src="bsc.png" width={"100px"} />
                 </Button>
                 <Button size="sm" onPress={ethChain}>
@@ -594,7 +649,7 @@ export default function Sell() {
                     signer
                   );
 
-                  if (chain !== ("Mumbai Testnet" && "Songbird" )) {
+                  if (chain !== ("Mumbai Testnet" && "Songbird")) {
                     await contractnft
                       .setApprovalForAll(address, true)
                       .then(async (res) => {

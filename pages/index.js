@@ -8,8 +8,23 @@ import NFTCollection from "../engine/NFTCollection.json";
 import Resell from "../engine/Resell.json";
 import Market from "../engine/Market.json";
 import NFT from "../engine/NFT.json";
-import { Grid, Card, Text, Button, Row, Spacer, Container, Loading, } from "@nextui-org/react";
-import { hhnft, hhmarket, hhresell, hhnftcol, hhrpc,} from "../engine/configuration";
+import {
+  Grid,
+  Card,
+  Text,
+  Button,
+  Row,
+  Spacer,
+  Container,
+  Loading,
+} from "@nextui-org/react";
+import {
+  hhnft,
+  hhmarket,
+  hhresell,
+  hhnftcol,
+  hhrpc,
+} from "../engine/configuration";
 import {
   goenft,
   goemarket,
@@ -79,7 +94,6 @@ import Web3 from "web3";
 import LoadingPopup from "../components/LoadingPopup";
 import BuyCard from "../components/BuyCard";
 
-
 export default function Home() {
   const [connectedWallet, setConnectedWallet] = useState(null);
   const [hhlist, hhResellNfts] = useState(null);
@@ -109,7 +123,6 @@ export default function Home() {
   const [songbirdNftShow, setSongbirdNftShow] = useState(false);
   const [nftNameSearchState, setNftNameSearchState] = useState(false);
   const [nftNameSearchArray, setNftNameSearchArray] = useState([]);
-
 
   const sliderImgArray = [
     {
@@ -142,7 +155,6 @@ export default function Home() {
     },
   ];
 
-  
   const networkSelect = (e) => {
     setNftNameSearchState(false);
     if (e === "Ethereum") {
@@ -351,10 +363,7 @@ export default function Home() {
             const Uri = Promise.resolve(rawUri);
             const getUri = Uri.then((value) => {
               let str = value;
-              let cleanUri = str.replace(
-                "ipfs://",
-                "https://ipfs.io/ipfs/"
-              );
+              let cleanUri = str.replace("ipfs://", "https://ipfs.io/ipfs/");
               // console.log(cleanUri);
               let metadata = axios.get(cleanUri).catch(function (error) {
                 console.log(error.toJSON());
@@ -365,10 +374,7 @@ export default function Home() {
               let rawImg = value.data.image;
               var name = value.data.name;
               var desc = value.data.description;
-              let image = rawImg.replace(
-                "ipfs://",
-                "https://ipfs.io/ipfs/"
-              );
+              let image = rawImg.replace("ipfs://", "https://ipfs.io/ipfs/");
               const price = market.getPrice(token);
               Promise.resolve(price).then((_hex) => {
                 var salePrice = Number(_hex);
@@ -507,10 +513,7 @@ export default function Home() {
             const rawUri = contract.tokenURI(token);
             const Uri = Promise.resolve(rawUri);
             const getUri = Uri.then((value) => {
-              let cleanUri = value.replace(
-                "ipfs://",
-                "https://infura-ipfs.io/ipfs/"
-              );
+              let cleanUri = value.replace("ipfs://", "https://ipfs.io/ipfs/");
               // console.log(cleanUri);
               let metadata = axios.get(cleanUri).catch(function (error) {
                 console.log(error.toJSON());
@@ -521,10 +524,7 @@ export default function Home() {
               let rawImg = value.data.image;
               var name = value.data.name;
               var desc = value.data.description;
-              let image = rawImg.replace(
-                "ipfs://",
-                "https://infura-ipfs.io/ipfs/"
-              );
+              let image = rawImg.replace("ipfs://", "https://ipfs.io/ipfs/");
               const price = market.getPrice(token);
               Promise.resolve(price).then((_hex) => {
                 var salePrice = Number(_hex);
@@ -662,10 +662,7 @@ export default function Home() {
             const Uri = Promise.resolve(rawUri);
             const getUri = Uri.then((value) => {
               let str = value;
-              let cleanUri = str.replace(
-                "ipfs://",
-                "https://infura-ipfs.io/ipfs/"
-              );
+              let cleanUri = str.replace("ipfs://", "https://ipfs.io/ipfs/");
               // console.log(cleanUri);
               let metadata = axios.get(cleanUri).catch(function (error) {
                 console.log(error.toJSON());
@@ -676,10 +673,7 @@ export default function Home() {
               let rawImg = value.data.image;
               var name = value.data.name;
               var desc = value.data.description;
-              let image = rawImg.replace(
-                "ipfs://",
-                "https://infura-ipfs.io/ipfs/"
-              );
+              let image = rawImg.replace("ipfs://", "https://ipfs.io/ipfs/");
               const price = market.getPrice(token);
               Promise.resolve(price).then((_hex) => {
                 var salePrice = Number(_hex);
@@ -814,10 +808,7 @@ export default function Home() {
           const Uri = Promise.resolve(rawUri);
           const getUri = Uri.then((value) => {
             let str = value;
-            let cleanUri = str.replace(
-              "ipfs://",
-              "https://infura-ipfs.io/ipfs/"
-            );
+            let cleanUri = str.replace("ipfs://", "https://ipfs.io/ipfs/");
             // console.log("cleanUri123", cleanUri);
 
             let metadata = axios.get(cleanUri).catch(function (error) {
@@ -830,10 +821,7 @@ export default function Home() {
             let rawImg = value.data.image;
             var name = value.data.name;
             var desc = value.data.description;
-            let image = rawImg.replace(
-              "ipfs://",
-              "https://infura-ipfs.io/ipfs/"
-            );
+            let image = rawImg.replace("ipfs://", "https://ipfs.io/ipfs/");
             const price = market.getPrice(tokenId);
             Promise.resolve(price).then((_hex) => {
               var salePrice = Number(_hex);
@@ -980,10 +968,7 @@ export default function Home() {
             const rawUri = contract.tokenURI(token);
             const Uri = Promise.resolve(rawUri);
             const getUri = Uri.then((value) => {
-              let cleanUri = value.replace(
-                "ipfs://",
-                "https://infura-ipfs.io/ipfs/"
-              );
+              let cleanUri = value.replace("ipfs://", "https://ipfs.io/ipfs/");
               // console.log(cleanUri);
               let metadata = axios.get(cleanUri).catch(function (error) {
                 console.log(error.toJSON());
@@ -994,10 +979,7 @@ export default function Home() {
               let rawImg = value.data.image;
               var name = value.data.name;
               var desc = value.data.description;
-              let image = rawImg.replace(
-                "ipfs://",
-                "https://infura-ipfs.io/ipfs/"
-              );
+              let image = rawImg.replace("ipfs://", "https://ipfs.io/ipfs/");
               const price = market.getPrice(token);
               Promise.resolve(price).then((_hex) => {
                 var salePrice = Number(_hex);
@@ -1135,10 +1117,7 @@ export default function Home() {
             const rawUri = contract.tokenURI(token);
             const Uri = Promise.resolve(rawUri);
             const getUri = Uri.then((value) => {
-              let cleanUri = value.replace(
-                "ipfs://",
-                "https://infura-ipfs.io/ipfs/"
-              );
+              let cleanUri = value.replace("ipfs://", "https://ipfs.io/ipfs/");
               // console.log(cleanUri);
               let metadata = axios.get(cleanUri).catch(function (error) {
                 console.log(error.toJSON());
@@ -1149,10 +1128,7 @@ export default function Home() {
               let rawImg = value.data.image;
               var name = value.data.name;
               var desc = value.data.description;
-              let image = rawImg.replace(
-                "ipfs://",
-                "https://infura-ipfs.io/ipfs/"
-              );
+              let image = rawImg.replace("ipfs://", "https://ipfs.io/ipfs/");
               const price = market.getPrice(token);
               Promise.resolve(price).then((_hex) => {
                 var salePrice = Number(_hex);
@@ -1290,10 +1266,7 @@ export default function Home() {
             const Uri = Promise.resolve(rawUri);
             const getUri = Uri.then((value) => {
               let str = value;
-              let cleanUri = str.replace(
-                "ipfs://",
-                "https://infura-ipfs.io/ipfs/"
-              );
+              let cleanUri = str.replace("ipfs://", "https://ipfs.io/ipfs/");
               // console.log(cleanUri);
               let metadata = axios.get(cleanUri).catch(function (error) {
                 console.log(error.toJSON());
@@ -1306,7 +1279,7 @@ export default function Home() {
               var desc = value.data.description;
               let image = rawImg.replace(
                 "ipfs://",
-                "https://infura-ipfs.io/ipfs/"
+                "https://ipfs.io/ipfs/"
               );
               const price = market.getPrice(token);
               Promise.resolve(price).then((_hex) => {
@@ -1444,7 +1417,7 @@ export default function Home() {
             let str = value;
             let cleanUri = str.replace(
               "ipfs://",
-              "https://infura-ipfs.io/ipfs/"
+              "https://ipfs.io/ipfs/"
             );
             // console.log("cleanUri123", cleanUri);
 
@@ -1460,7 +1433,7 @@ export default function Home() {
             var desc = value.data.description;
             let image = rawImg.replace(
               "ipfs://",
-              "https://infura-ipfs.io/ipfs/"
+              "https://ipfs.io/ipfs/"
             );
             const price = market.getPrice(tokenId);
             Promise.resolve(price).then((_hex) => {
@@ -1641,7 +1614,8 @@ export default function Home() {
             css={{
               backgroundImage: "url(./8e145599d4847e339828787162952035.gif)",
               backgroundSize: "cover",
-            }}>
+            }}
+          >
             <Container
               xs
               css={{
@@ -1658,7 +1632,8 @@ export default function Home() {
                   },
                   "& .custom-dot-list-style": { bottom: "-9px" },
                 },
-              }}>
+              }}
+            >
               <Text
                 css={{
                   textAlign: "center",
@@ -1667,7 +1642,8 @@ export default function Home() {
                   animation: "spin 2s linear infinite",
                   backgroundSize: "cover",
                 }}
-                h2>
+                h2
+              >
                 🔥 Top NFT's 🔥
               </Text>
               <div style={{ textAlign: "center", minHeight: "100px" }}>
@@ -1700,7 +1676,8 @@ export default function Home() {
                   removeArrowOnDeviceType={["tablet", "mobile"]}
                   itemClass="carousel-item-padding-100-px"
                   itemAriaLabel="abcd"
-                  className="SliderWrapper">
+                  className="SliderWrapper"
+                >
                   {sliderImgArray.map((nft, i) => (
                     <div
                       key={i}
@@ -1709,7 +1686,8 @@ export default function Home() {
                         maxHeight: "350px",
                         borderRadius: "10%",
                         objectPosition: "cover",
-                      }}>
+                      }}
+                    >
                       <Card.Image
                         css={{
                           maxWidth: "350px",
@@ -1741,7 +1719,8 @@ export default function Home() {
                 borderRadius: "10px",
                 marginRight: "3%",
               }}
-              onChange={(e) => networkSelect(e.target.value)}>
+              onChange={(e) => networkSelect(e.target.value)}
+            >
               <option>Ethereum</option>
               <option>Binance</option>
               <option>Polygon</option>
@@ -1782,10 +1761,13 @@ export default function Home() {
                     width: "100%",
                     display: "flex",
                     justifyContent: "center",
-                  }}>                {!flrlist && (
-                  <Loading type="gradient" size="xl" color="secondary" />
-                )}
-                {flrlist?.length == 0 && <Text h4>No NFTs ReListed. </Text>}
+                  }}
+                >
+                  {" "}
+                  {!flrlist && (
+                    <Loading type="gradient" size="xl" color="secondary" />
+                  )}
+                  {flrlist?.length == 0 && <Text h4>No NFTs ReListed. </Text>}
                 </div>
                 {flrlist &&
                   flrlist.map((nft, id) => {
@@ -1823,7 +1805,8 @@ export default function Home() {
                             boxShadow: "1px 1px 10px #ffffff",
                             marginBottom: "15px",
                           }}
-                          variant="bordered">
+                          variant="bordered"
+                        >
                           <Card.Body css={{ p: 0 }}>
                             <Card.Image
                               css={{
@@ -1842,14 +1825,16 @@ export default function Home() {
                                 justifyContent: "flex-start",
                                 alignItems: "flex-start",
                               }}
-                              wrap="wrap">
+                              wrap="wrap"
+                            >
                               <Text
                                 css={{
                                   fontSize: "18px",
                                   textTransform: "capitalize",
                                   mb: "0",
                                 }}
-                                h4>
+                                h4
+                              >
                                 {nft.name} Token-{nft.tokenId}
                               </Text>
                               <Text
@@ -1864,7 +1849,8 @@ export default function Home() {
                                   overflow: "hidden",
                                   textOverflow: "ellipsis",
                                 }}
-                                p>
+                                p
+                              >
                                 {nft.desc}
                               </Text>
                               <Text
@@ -1875,7 +1861,8 @@ export default function Home() {
                                   flexWrap: "wrap",
                                   justifyContent: "space-between",
                                   mb: "10px",
-                                }}>
+                                }}
+                              >
                                 {nft.val}{" "}
                                 <img
                                   src="n2dr-logo.png"
@@ -1892,14 +1879,16 @@ export default function Home() {
                                   css={{ fontSize: "16px", minWidth: "100%" }}
                                   onPress={() =>
                                     handleConfetti(buylistNft(nft))
-                                  }>
+                                  }
+                                >
                                   Buy
                                 </Button>
                               ) : (
                                 <Button
                                   color="gradient"
                                   css={{ fontSize: "16px", minWidth: "100%" }}
-                                  onClick={flrChain}>
+                                  onClick={flrChain}
+                                >
                                   Switch to Flare
                                 </Button>
                               )}
@@ -1931,7 +1920,8 @@ export default function Home() {
                     width: "100%",
                     display: "flex",
                     justifyContent: "center",
-                  }}>
+                  }}
+                >
                   {!flrnfts && (
                     <Loading type="gradient" size="xl" color="secondary" />
                   )}
@@ -1976,9 +1966,7 @@ export default function Home() {
                   )}
                 </>
               </Grid.Container>
-             
             </Container>
-            
           </>
         )}
         {songbirdNftShow && (
@@ -2000,10 +1988,13 @@ export default function Home() {
                     width: "100%",
                     display: "flex",
                     justifyContent: "center",
-                  }}>                {!hhlist && (
-                  <Loading type="gradient" size="xl" color="secondary" />
-                )}
-                {hhlist?.length == 0 && <Text h4>No NFTs ReListed. </Text>}
+                  }}
+                >
+                  {" "}
+                  {!hhlist && (
+                    <Loading type="gradient" size="xl" color="secondary" />
+                  )}
+                  {hhlist?.length == 0 && <Text h4>No NFTs ReListed. </Text>}
                 </div>
                 {hhlist &&
                   hhlist.map((nft, id) => {
@@ -2041,7 +2032,8 @@ export default function Home() {
                             boxShadow: "1px 1px 10px #ffffff",
                             marginBottom: "15px",
                           }}
-                          variant="bordered">
+                          variant="bordered"
+                        >
                           <Card.Body css={{ p: 0 }}>
                             <Card.Image
                               css={{
@@ -2060,7 +2052,8 @@ export default function Home() {
                                 justifyContent: "flex-start",
                                 alignItems: "flex-start",
                               }}
-                              wrap="wrap">
+                              wrap="wrap"
+                            >
                               <Text
                                 css={{
                                   color: "#fff",
@@ -2068,7 +2061,8 @@ export default function Home() {
                                   textTransform: "capitalize",
                                   mb: "0",
                                 }}
-                                h4>
+                                h4
+                              >
                                 {nft.name} Token-{nft.tokenId}
                               </Text>
                               <Text
@@ -2083,7 +2077,8 @@ export default function Home() {
                                   overflow: "hidden",
                                   textOverflow: "ellipsis",
                                 }}
-                                p>
+                                p
+                              >
                                 {nft.desc}
                               </Text>
                               <Text
@@ -2094,7 +2089,8 @@ export default function Home() {
                                   flexWrap: "wrap",
                                   justifyContent: "space-between",
                                   mb: "10px",
-                                }}>
+                                }}
+                              >
                                 {nft.val}{" "}
                                 <img
                                   src="n2dr-logo.png"
@@ -2112,14 +2108,16 @@ export default function Home() {
                                   css={{ fontSize: "16px", minWidth: "100%" }}
                                   onPress={() =>
                                     handleConfetti(buylistNft(nft))
-                                  }>
+                                  }
+                                >
                                   Buy
                                 </Button>
                               ) : (
                                 <Button
                                   color="gradient"
                                   css={{ fontSize: "16px", minWidth: "100%" }}
-                                  onClick={hardChain}>
+                                  onClick={hardChain}
+                                >
                                   Switch to Songbird
                                 </Button>
                               )}
@@ -2149,7 +2147,8 @@ export default function Home() {
                     width: "100%",
                     display: "flex",
                     justifyContent: "center",
-                  }}>
+                  }}
+                >
                   {!hhnfts && (
                     <Loading type="gradient" size="xl" color="secondary" />
                   )}
@@ -2219,10 +2218,13 @@ export default function Home() {
                     width: "100%",
                     display: "flex",
                     justifyContent: "center",
-                  }}>                {!bnblist && (
-                  <Loading type="gradient" size="xl" color="secondary" />
-                )}
-                {bnblist?.length == 0 && <Text h4>No NFTs ReListed. </Text>}
+                  }}
+                >
+                  {" "}
+                  {!bnblist && (
+                    <Loading type="gradient" size="xl" color="secondary" />
+                  )}
+                  {bnblist?.length == 0 && <Text h4>No NFTs ReListed. </Text>}
                 </div>
                 {bnblist &&
                   bnblist.map((nft, id) => {
@@ -2260,7 +2262,8 @@ export default function Home() {
                             boxShadow: "1px 1px 10px #ffffff",
                             marginBottom: "15px",
                           }}
-                          variant="bordered">
+                          variant="bordered"
+                        >
                           <Card.Body css={{ p: 0 }}>
                             <Card.Image
                               css={{
@@ -2281,14 +2284,16 @@ export default function Home() {
                                 // "@media screen and (min-width:1000px)": {
                                 // },
                               }}
-                              wrap="wrap">
+                              wrap="wrap"
+                            >
                               <Text
                                 css={{
                                   fontSize: "18px",
                                   textTransform: "capitalize",
                                   mb: "0",
                                 }}
-                                h4>
+                                h4
+                              >
                                 {nft.name} Token-{nft.tokenId}
                               </Text>
                               <Text
@@ -2303,7 +2308,8 @@ export default function Home() {
                                   overflow: "hidden",
                                   textOverflow: "ellipsis",
                                 }}
-                                p>
+                                p
+                              >
                                 {nft.desc}
                               </Text>
                               <Text
@@ -2314,7 +2320,8 @@ export default function Home() {
                                   flexWrap: "wrap",
                                   justifyContent: "space-between",
                                   mb: "10px",
-                                }}>
+                                }}
+                              >
                                 {nft.val}{" "}
                                 <img
                                   src="n2dr-logo.png"
@@ -2331,14 +2338,16 @@ export default function Home() {
                                   css={{ fontSize: "16px", minWidth: "100%" }}
                                   onPress={() =>
                                     handleConfetti(buylistNft(nft))
-                                  }>
+                                  }
+                                >
                                   Buy
                                 </Button>
                               ) : (
                                 <Button
                                   color="gradient"
                                   css={{ fontSize: "16px", minWidth: "100%" }}
-                                  onClick={bscChain}>
+                                  onClick={bscChain}
+                                >
                                   Switch to binance
                                 </Button>
                               )}
@@ -2370,7 +2379,8 @@ export default function Home() {
                     width: "100%",
                     display: "flex",
                     justifyContent: "center",
-                  }}>
+                  }}
+                >
                   {!bnbnfts && (
                     <Loading type="gradient" size="xl" color="secondary" />
                   )}
@@ -2440,10 +2450,13 @@ export default function Home() {
                     width: "100%",
                     display: "flex",
                     justifyContent: "center",
-                  }}>                {!polylist && (
-                  <Loading type="gradient" size="xl" color="secondary" />
-                )}
-                {polylist?.length == 0 && <Text h4>No NFTs ReListed. </Text>}
+                  }}
+                >
+                  {" "}
+                  {!polylist && (
+                    <Loading type="gradient" size="xl" color="secondary" />
+                  )}
+                  {polylist?.length == 0 && <Text h4>No NFTs ReListed. </Text>}
                 </div>
                 {polylist &&
                   polylist.map((nft, id) => {
@@ -2481,7 +2494,8 @@ export default function Home() {
                             boxShadow: "1px 1px 10px #ffffff",
                             marginBottom: "15px",
                           }}
-                          variant="bordered">
+                          variant="bordered"
+                        >
                           <Card.Body css={{ p: 0 }}>
                             <Card.Image
                               css={{
@@ -2500,14 +2514,16 @@ export default function Home() {
                                 justifyContent: "flex-start",
                                 alignItems: "flex-start",
                               }}
-                              wrap="wrap">
+                              wrap="wrap"
+                            >
                               <Text
                                 css={{
                                   fontSize: "18px",
                                   textTransform: "capitalize",
                                   mb: "0",
                                 }}
-                                h4>
+                                h4
+                              >
                                 {nft.name} Token-{nft.tokenId}
                               </Text>
                               <Text
@@ -2522,7 +2538,8 @@ export default function Home() {
                                   overflow: "hidden",
                                   textOverflow: "ellipsis",
                                 }}
-                                p>
+                                p
+                              >
                                 {nft.desc}
                               </Text>
                               <Text
@@ -2533,7 +2550,8 @@ export default function Home() {
                                   flexWrap: "wrap",
                                   justifyContent: "space-between",
                                   mb: "10px",
-                                }}>
+                                }}
+                              >
                                 {nft.val}{" "}
                                 <img
                                   src="n2dr-logo.png"
@@ -2550,14 +2568,16 @@ export default function Home() {
                                   css={{ fontSize: "16px", minWidth: "100%" }}
                                   onPress={() =>
                                     handleConfetti(buylistNft(nft))
-                                  }>
+                                  }
+                                >
                                   Buy
                                 </Button>
                               ) : (
                                 <Button
                                   color="gradient"
                                   css={{ fontSize: "16px", minWidth: "100%" }}
-                                  onClick={polyChain}>
+                                  onClick={polyChain}
+                                >
                                   Switch to Polygon
                                 </Button>
                               )}
@@ -2588,7 +2608,8 @@ export default function Home() {
                     width: "100%",
                     display: "flex",
                     justifyContent: "center",
-                  }}>
+                  }}
+                >
                   {!polynfts && (
                     <Loading type="gradient" size="xl" color="secondary" />
                   )}
@@ -2664,10 +2685,13 @@ export default function Home() {
                     width: "100%",
                     display: "flex",
                     justifyContent: "center",
-                  }}>                {!ethlist && (
-                  <Loading type="gradient" size="xl" color="secondary" />
-                )}
-                {ethlist?.length == 0 && <Text h4>No NFTs ReListed. </Text>}
+                  }}
+                >
+                  {" "}
+                  {!ethlist && (
+                    <Loading type="gradient" size="xl" color="secondary" />
+                  )}
+                  {ethlist?.length == 0 && <Text h4>No NFTs ReListed. </Text>}
                 </div>
                 {ethlist &&
                   ethlist.map((nft, id) => {
@@ -2705,7 +2729,8 @@ export default function Home() {
                             boxShadow: "1px 1px 10px #ffffff",
                             marginBottom: "15px",
                           }}
-                          variant="bordered">
+                          variant="bordered"
+                        >
                           <Card.Body css={{ p: 0 }}>
                             <Card.Image
                               css={{
@@ -2724,14 +2749,16 @@ export default function Home() {
                                 justifyContent: "flex-start",
                                 alignItems: "flex-start",
                               }}
-                              wrap="wrap">
+                              wrap="wrap"
+                            >
                               <Text
                                 css={{
                                   fontSize: "18px",
                                   textTransform: "capitalize",
                                   mb: "0",
                                 }}
-                                h4>
+                                h4
+                              >
                                 {nft.name} Token-{nft.tokenId}
                               </Text>
                               <Text
@@ -2746,7 +2773,8 @@ export default function Home() {
                                   overflow: "hidden",
                                   textOverflow: "ellipsis",
                                 }}
-                                p>
+                                p
+                              >
                                 {nft.desc}
                               </Text>
                               <Text
@@ -2757,7 +2785,8 @@ export default function Home() {
                                   flexWrap: "wrap",
                                   justifyContent: "space-between",
                                   mb: "10px",
-                                }}>
+                                }}
+                              >
                                 {nft.val}{" "}
                                 <img
                                   src="n2dr-logo.png"
@@ -2774,14 +2803,16 @@ export default function Home() {
                                   css={{ fontSize: "16px", minWidth: "100%" }}
                                   onPress={() =>
                                     handleConfetti(buylistNft(nft))
-                                  }>
+                                  }
+                                >
                                   Buy
                                 </Button>
                               ) : (
                                 <Button
                                   color="gradient"
                                   css={{ fontSize: "16px", minWidth: "100%" }}
-                                  onClick={ethChain}>
+                                  onClick={ethChain}
+                                >
                                   Switch to Ethereum
                                 </Button>
                               )}
@@ -2813,7 +2844,8 @@ export default function Home() {
                     width: "100%",
                     display: "flex",
                     justifyContent: "center",
-                  }}>
+                  }}
+                >
                   {!ethnfts && (
                     <Loading type="gradient" size="xl" color="secondary" />
                   )}
