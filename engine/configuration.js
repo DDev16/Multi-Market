@@ -77,4 +77,4 @@ export var mmresell = "0x935feEaA1e4959C7DeB9C3AF0B3B75C2b7e09d70";
 export var mmnftcol = "0x65f4643394437E0D27a151AB6e0ebbd72019089F";
 export var mmnft = "0x3dea30E978E8D042FdA3FF468665b0fd36720fBb";
 export var mmmarket = "0x2C35b5366011fa9B3531fef52d8D21c575153c0A";
-export var mmrpc = "https://matic-mumbai.chainstacklabs.com";
+export var mmrpc = "https://rpc.ankr.com/polygon_mumbai";

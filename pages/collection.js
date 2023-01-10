@@ -34,7 +34,14 @@ import LoadingPopup from "../components/LoadingPopup";
 import Web3Modal from "web3modal";
 import { useRouter } from "next/router";
 
-const CustomCard = ({ nft, visible, setVisible, key, contractConfig }) => {
+const CustomCard = ({
+  nft,
+  visible,
+  setVisible,
+  key,
+  contractConfig,
+  refresh,
+}) => {
   const [activeChain, setActiveChain] = useState(null);
   const [connectedWallet, setConnectedWallet] = useState(null);
 
@@ -157,7 +164,35 @@ const CustomCard = ({ nft, visible, setVisible, key, contractConfig }) => {
       return;
     }
     await transaction.wait();
-    router.push("/portal");
+    refresh();
+    setVisible(false);
+    // router.push("/portal");
+  }
+
+  async function cancelList(itemId) {
+    setVisible(true);
+    const web3Modal = new Web3Modal();
+    const connection = await web3Modal.connect();
+    const provider = new ethers.providers.Web3Provider(connection);
+    const signer = provider.getSigner();
+
+    let contract = new ethers.Contract(nftResell, Resell, signer);
+    const gasPrice = signer.getGasPrice();
+    let transaction = await contract
+      .cancelSale(itemId, {
+        gasPrice: gasPrice,
+      })
+      .catch((err) => {
+        setVisible(false);
+        console.log("err", err.message);
+      });
+    if (!transaction) {
+      return;
+    }
+    await transaction.wait();
+    console.log("CANCELLED");
+    refresh();
+    setVisible(false);
   }
 
   return (
@@ -234,7 +269,7 @@ const CustomCard = ({ nft, visible, setVisible, key, contractConfig }) => {
           >
             {nft.desc}
           </Text>
-          {nft.cost == 0 ? (
+          {/* {nft.cost == 0 ? (
             connectedWallet &&
             nft.wallet.toLowerCase() === connectedWallet.toLowerCase() && (
               <>
@@ -278,6 +313,38 @@ const CustomCard = ({ nft, visible, setVisible, key, contractConfig }) => {
                 </Button>
               </>
             )
+          ) :  */}
+          {connectedWallet &&
+          nft.wallet.toLowerCase() === connectedWallet.toLowerCase() ? (
+            <>
+              <Text
+                css={{
+                  fontSize: "20px",
+                  display: "flex",
+                  alignItems: "center",
+                  flexWrap: "wrap",
+                  justifyContent: "space-between",
+                  mb: "10px",
+                }}
+              >
+                {nft.val}{" "}
+                <img
+                  src="n2dr-logo.png"
+                  style={{
+                    width: "60px",
+                    height: "25px",
+                    marginTop: "4px",
+                  }}
+                />
+              </Text>
+              <Button
+                color="gradient"
+                css={{ fontSize: "16px", minWidth: "100%" }}
+                onPress={() => cancelList(nft.tokenId)}
+              >
+                cancel
+              </Button>
+            </>
           ) : (
             <>
               <Text
@@ -395,13 +462,15 @@ const Collection = () => {
     );
     const itemArray = [];
     await contract.totalSupply().then((result) => {
-      // console.log("result", result);
       for (let i = 0; i < result; i++) {
         var token = i + 1;
-        const owner = contract.ownerOf(token).catch(function (error) {
+        // const owner = contract.ownerOf(token).catch(function (error) {
+        //   console.log("tokens filtered");
+        // });
+        const rawUri = contract.tokenURI(token).catch(function (error) {
           console.log("tokens filtered");
         });
-        const rawUri = contract.tokenURI(token).catch(function (error) {
+        const listing = market.nftListings().catch(function (error) {
           console.log("tokens filtered");
         });
         const Uri = Promise.resolve(rawUri);
@@ -423,23 +492,35 @@ const Collection = () => {
           Promise.resolve(price).then((_hex) => {
             var salePrice = Number(_hex);
             var txPrice = salePrice.toString();
-            Promise.resolve(owner).then((value) => {
-              let ownerW = value;
-              let outPrice = ethers.utils.formatUnits(
-                salePrice.toString(),
-                "ether"
-              );
-              let meta = {
-                name: name,
-                img: image,
-                cost: txPrice,
-                val: outPrice,
-                tokenId: token,
-                wallet: ownerW,
-                desc,
-              };
-              // console.log(meta);
-              itemArray.push(meta);
+            Promise.resolve(listing).then((value) => {
+              // let ownerW = value;
+              let seller;
+              let holder;
+              value.map((item) => {
+                if (item.tokenId.toNumber() == token) {
+                  // if (item.price.toNumber() !== 0) {
+                  seller = item.seller;
+                  holder = item.holder;
+
+                  let outPrice = ethers.utils.formatUnits(
+                    salePrice.toString(),
+                    "ether"
+                  );
+                  let meta = {
+                    name: name,
+                    img: image,
+                    cost: txPrice,
+                    val: outPrice,
+                    tokenId: token,
+                    wallet: seller,
+                    holder: holder,
+                    desc,
+                  };
+                  // console.log(meta);
+                  itemArray.push(meta);
+                  // }
+                }
+              });
             });
           });
         });
@@ -461,6 +542,14 @@ const Collection = () => {
     }
   }, [contractConfig]);
 
+  const refresh = () => {
+    const { nftCol, nftRpc, nftResell } = contractConfig;
+    if (nftCol && nftRpc && nftResell) {
+      loadNftResell();
+    }
+    setContract();
+  };
+
   useEffect(() => {
     console.log("contractConfig", contractConfig);
   }, [contractConfig]);
@@ -468,6 +557,10 @@ const Collection = () => {
   useEffect(() => {
     console.log("nftArray", nftArray);
   }, [nftArray]);
+
+  useEffect(() => {
+    refresh();
+  }, []);
 
   const nftList = nftArray?.map((nft, i) => {
     return (
@@ -477,6 +570,7 @@ const Collection = () => {
           visible={visible}
           setVisible={setVisible}
           contractConfig={contractConfig}
+          refresh={refresh}
         />
       </Grid>
     );

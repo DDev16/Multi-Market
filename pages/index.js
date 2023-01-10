@@ -352,55 +352,68 @@ export default function Home() {
     const market = new ethers.Contract(hhresell, Resell, provider);
     const itemArray = [];
 
-    contract.totalSupply().then((result) => {
+    await contract.totalSupply().then((result) => {
       for (let i = 0; i < result; i++) {
         var token = i + 1;
         var owner = contract.ownerOf(token);
-        var getOwner = Promise.resolve(owner);
-        getOwner.then((address) => {
-          if (address == hhresell) {
-            const rawUri = contract.tokenURI(token);
-            const Uri = Promise.resolve(rawUri);
-            const getUri = Uri.then((value) => {
-              let str = value;
-              let cleanUri = str.replace("ipfs://", "https://ipfs.io/ipfs/");
-              // console.log(cleanUri);
-              let metadata = axios.get(cleanUri).catch(function (error) {
-                console.log(error.toJSON());
-              });
-              return metadata;
-            });
-            getUri.then((value) => {
-              let rawImg = value.data.image;
-              var name = value.data.name;
-              var desc = value.data.description;
-              let image = rawImg.replace("ipfs://", "https://ipfs.io/ipfs/");
-              const price = market.getPrice(token);
-              Promise.resolve(price).then((_hex) => {
-                var salePrice = Number(_hex);
-                var txPrice = salePrice.toString();
-                Promise.resolve(owner).then((value) => {
-                  let ownerW = value;
-                  let outPrice = ethers.utils.formatUnits(
-                    salePrice.toString(),
-                    "ether"
-                  );
-                  let meta = {
-                    name: name,
-                    image: image,
-                    cost: txPrice,
-                    val: outPrice,
-                    tokenId: token,
-                    wallet: ownerW,
-                    desc,
-                  };
-                  // console.log(meta);
-                  itemArray.push(meta);
-                });
-              });
-            });
-          }
+        const listing = market.nftListings().catch(function (error) {
+          console.log("tokens filtered");
         });
+
+        // var getOwner = Promise.resolve(owner);
+        // getOwner.then((address) => {
+        // if (address == hhresell) {
+        const rawUri = contract.tokenURI(token);
+        const Uri = Promise.resolve(rawUri);
+        const getUri = Uri.then((value) => {
+          let cleanUri = value.replace("ipfs://", "https://ipfs.io/ipfs/");
+          console.log("cleanUri", cleanUri);
+          let metadata = axios.get(cleanUri).catch(function (error) {
+            console.log(error.toJSON());
+          });
+          return metadata;
+        });
+        getUri.then((value) => {
+          let rawImg = value.data.image;
+          var name = value.data.name;
+          var desc = value.data.description;
+          let image = rawImg.replace("ipfs://", "https://ipfs.io/ipfs/");
+          const price = market.getPrice(token);
+          Promise.resolve(price).then((_hex) => {
+            var salePrice = Number(_hex);
+            var txPrice = salePrice.toString();
+            Promise.resolve(listing).then((value) => {
+              // let ownerW = value;
+              let seller;
+              let holder;
+              value.map((item) => {
+                if (item.tokenId.toNumber() == token) {
+                  seller = item.seller;
+                  holder = item.holder;
+
+                    let outPrice = ethers.utils.formatUnits(
+                      salePrice.toString(),
+                      "ether"
+                    );
+                    let meta = {
+                      name: name,
+                      image: image,
+                      cost: txPrice,
+                      val: outPrice,
+                      tokenId: token,
+                      wallet: seller,
+                      holder: holder,
+                      desc,
+                    };
+                    itemArray.push(meta);
+                }
+              });
+            
+            });
+          });
+        });
+        // }
+        // });
       }
     });
     await new Promise((r) => setTimeout(r, 3000));
@@ -1277,10 +1290,7 @@ export default function Home() {
               let rawImg = value.data.image;
               var name = value.data.name;
               var desc = value.data.description;
-              let image = rawImg.replace(
-                "ipfs://",
-                "https://ipfs.io/ipfs/"
-              );
+              let image = rawImg.replace("ipfs://", "https://ipfs.io/ipfs/");
               const price = market.getPrice(token);
               Promise.resolve(price).then((_hex) => {
                 var salePrice = Number(_hex);
@@ -1415,10 +1425,7 @@ export default function Home() {
           const Uri = Promise.resolve(rawUri);
           const getUri = Uri.then((value) => {
             let str = value;
-            let cleanUri = str.replace(
-              "ipfs://",
-              "https://ipfs.io/ipfs/"
-            );
+            let cleanUri = str.replace("ipfs://", "https://ipfs.io/ipfs/");
             // console.log("cleanUri123", cleanUri);
 
             let metadata = axios.get(cleanUri).catch(function (error) {
@@ -1431,10 +1438,7 @@ export default function Home() {
             let rawImg = value.data.image;
             var name = value.data.name;
             var desc = value.data.description;
-            let image = rawImg.replace(
-              "ipfs://",
-              "https://ipfs.io/ipfs/"
-            );
+            let image = rawImg.replace("ipfs://", "https://ipfs.io/ipfs/");
             const price = market.getPrice(tokenId);
             Promise.resolve(price).then((_hex) => {
               var salePrice = Number(_hex);
