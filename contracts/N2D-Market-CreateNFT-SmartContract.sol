@@ -28,13 +28,13 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract N2DNFT is ERC721URIStorage, Ownable {
+contract MonstersNFT is ERC721URIStorage, Ownable {
     using Counters for Counters.Counter;
     Counters.Counter public _tokenIds;
     address contractAddress;
     uint256 public mintingCost = 0.0075 ether;
 
-    constructor(address marketContract) ERC721("n2DMarket", "N2DM") {
+    constructor(address marketContract) ERC721("Monsters Marketplace", "MMP") {
         contractAddress = marketContract;
     }
 
@@ -43,7 +43,7 @@ contract N2DNFT is ERC721URIStorage, Ownable {
         payable
         returns (uint256)
     {
-        require(msg.value == mintingCost, "Need to send 0.0075 ether!");
+        require(msg.value == mintingCost, "Need to send minting fee!");
         _tokenIds.increment();
         uint256 newItemId = _tokenIds.current();
         _mint(msg.sender, newItemId);
@@ -53,7 +53,7 @@ contract N2DNFT is ERC721URIStorage, Ownable {
     }
 
     function mintNFT(string memory tokenURI) public payable returns (uint256) {
-        require(msg.value == mintingCost, "Need to send 0.0075 ether!");
+        require(msg.value == mintingCost, "Need to send minting fee!");
         _tokenIds.increment();
         uint256 newItemId = _tokenIds.current();
         _mint(msg.sender, newItemId);

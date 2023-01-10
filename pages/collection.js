@@ -107,7 +107,7 @@ const CustomCard = ({
     const price = ethers.utils.parseUnits(resalePrice.price, "ether");
     const contractnft = new ethers.Contract(nftCol, NFTCollection, signer);
     await contractnft
-      .setApprovalForAll(nftResell, true, { gasPrice: "30000000000" })
+      .setApprovalForAll(nftResell, true, { gasPrice: "50000000000" })
       .then(async (res) => {
         console.log("res", res);
         const filter = {
@@ -124,7 +124,7 @@ const CustomCard = ({
           let transaction = await contract
             .listSale(nft.tokenId, price, {
               value: listingFee,
-              gasPrice: "30000000000",
+              gasPrice: "50000000000",
             })
             .catch((err) => {
               console.log("err", err);
@@ -152,7 +152,7 @@ const CustomCard = ({
     const transaction = await contract
       .buyNft(nft.tokenId, {
         value: nft.cost,
-        gasPrice: "30000000000",
+        gasPrice: "40000000000",
       })
       .catch((error) => {
         if (error.data?.message.includes("insufficient funds")) {
