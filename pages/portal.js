@@ -649,7 +649,7 @@ export default function Sell() {
                     signer
                   );
 
-                  if (chain !== ("Mumbai Testnet" && "Songbird")) {
+                  if (chain !== ("Mumbai Testnet" && "Songbird" && "Polygon")) {
                     await contractnft
                       .setApprovalForAll(address, true)
                       .then(async (res) => {

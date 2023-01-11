@@ -177,10 +177,10 @@ const CustomCard = ({
     const signer = provider.getSigner();
 
     let contract = new ethers.Contract(nftResell, Resell, signer);
-    const gasPrice = signer.getGasPrice();
+    // const gasPrice = signer.getGasPrice();
     let transaction = await contract
       .cancelSale(itemId, {
-        gasPrice: gasPrice,
+        gasPrice: "30000000000",
       })
       .catch((err) => {
         setVisible(false);
