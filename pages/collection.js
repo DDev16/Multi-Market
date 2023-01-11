@@ -478,51 +478,55 @@ const Collection = () => {
           if (value) {
             var cleanUri = value.replace("ipfs://", "https://ipfs.io/ipfs/");
             let metadata = axios.get(cleanUri).catch(function (error) {
-              console.log(error.toJSON());
+              // console.log(error.toJSON());
             });
             return metadata;
           }
         });
         getUri.then((value) => {
-          let rawImg = value.data.image;
-          var name = value.data.name;
-          var desc = value.data.description;
-          let image = rawImg.replace("ipfs://", "https://ipfs.io/ipfs/");
-          const price = market.getPrice(token);
-          Promise.resolve(price).then((_hex) => {
-            var salePrice = Number(_hex);
-            var txPrice = salePrice.toString();
-            Promise.resolve(listing).then((value) => {
-              // let ownerW = value;
-              let seller;
-              let holder;
-              value.map((item) => {
-                if (item.tokenId.toNumber() == token) {
-                  // if (item.price.toNumber() !== 0) {
-                  seller = item.seller;
-                  holder = item.holder;
+          if (value) {
+            let rawImg = value.data.image;
+            var name = value.data.name;
+            var desc = value.data.description;
+            let image = rawImg.replace("ipfs://", "https://ipfs.io/ipfs/");
+            const price = market.getPrice(token);
+            Promise.resolve(price).then((_hex) => {
+              var salePrice = Number(_hex);
+              var txPrice = salePrice.toString();
+              Promise.resolve(listing).then((value) => {
+                
 
-                  let outPrice = ethers.utils.formatUnits(
-                    salePrice.toString(),
-                    "ether"
-                  );
-                  let meta = {
-                    name: name,
-                    img: image,
-                    cost: txPrice,
-                    val: outPrice,
-                    tokenId: token,
-                    wallet: seller,
-                    holder: holder,
-                    desc,
-                  };
-                  // console.log(meta);
-                  itemArray.push(meta);
-                  // }
-                }
+                // let ownerW = value;
+                let seller;
+                let holder;
+                value.map((item) => {
+                  if (item.tokenId.toNumber() == token) {
+                    // if (item.price.toNumber() !== 0) {
+                    seller = item.seller;
+                    holder = item.holder;
+
+                    let outPrice = ethers.utils.formatUnits(
+                      salePrice.toString(),
+                      "ether"
+                    );
+                    let meta = {
+                      name: name,
+                      img: image,
+                      cost: txPrice,
+                      val: outPrice,
+                      tokenId: token,
+                      wallet: seller,
+                      holder: holder,
+                      desc,
+                    };
+                    // console.log(meta);
+                    itemArray.push(meta);
+                    // }
+                  }
+                });
               });
             });
-          });
+          }
         });
       }
     });

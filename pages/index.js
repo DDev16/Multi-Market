@@ -366,30 +366,32 @@ export default function Home() {
         const rawUri = contract.tokenURI(token);
         const Uri = Promise.resolve(rawUri);
         const getUri = Uri.then((value) => {
-          let cleanUri = value.replace("ipfs://", "https://ipfs.io/ipfs/");
-          console.log("cleanUri", cleanUri);
-          let metadata = axios.get(cleanUri).catch(function (error) {
-            console.log(error.toJSON());
-          });
-          return metadata;
+          if (value) {
+            let cleanUri = value.replace("ipfs://", "https://ipfs.io/ipfs/");
+            let metadata = axios.get(cleanUri).catch(function (error) {
+              // console.log(error.toJSON());
+            });
+            return metadata;
+          }
         });
         getUri.then((value) => {
-          let rawImg = value.data.image;
-          var name = value.data.name;
-          var desc = value.data.description;
-          let image = rawImg.replace("ipfs://", "https://ipfs.io/ipfs/");
-          const price = market.getPrice(token);
-          Promise.resolve(price).then((_hex) => {
-            var salePrice = Number(_hex);
-            var txPrice = salePrice.toString();
-            Promise.resolve(listing).then((value) => {
-              // let ownerW = value;
-              let seller;
-              let holder;
-              value.map((item) => {
-                if (item.tokenId.toNumber() == token) {
-                  seller = item.seller;
-                  holder = item.holder;
+          if (value) {
+            let rawImg = value.data.image;
+            var name = value.data.name;
+            var desc = value.data.description;
+            let image = rawImg.replace("ipfs://", "https://ipfs.io/ipfs/");
+            const price = market.getPrice(token);
+            Promise.resolve(price).then((_hex) => {
+              var salePrice = Number(_hex);
+              var txPrice = salePrice.toString();
+              Promise.resolve(listing).then((value) => {
+                // let ownerW = value;
+                let seller;
+                let holder;
+                value.map((item) => {
+                  if (item.tokenId.toNumber() == token) {
+                    seller = item.seller;
+                    holder = item.holder;
 
                     let outPrice = ethers.utils.formatUnits(
                       salePrice.toString(),
@@ -406,11 +408,11 @@ export default function Home() {
                       desc,
                     };
                     itemArray.push(meta);
-                }
+                  }
+                });
               });
-            
             });
-          });
+          }
         });
         // }
         // });
@@ -1420,7 +1422,7 @@ export default function Home() {
     await market.nftListings().then((result) => {
       const items = result.map((item) => {
         const tokenId = item.tokenId.toNumber();
-        if (item.holder.toLowerCase() == polyresell) {
+        if (item.holder.toLowerCase() == polyresell.toLowerCase()) {
           const rawUri = contract.tokenURI(tokenId);
           const Uri = Promise.resolve(rawUri);
           const getUri = Uri.then((value) => {
