@@ -290,23 +290,25 @@ export default function Sell() {
         });
         getUri.then((value) => {
           // console.log("abcd", value)
-          let rawImg = value.data.image;
-          var name = value.data.name;
-          var desc = value.data.description;
-          let image = rawImg.replace("ipfs://", "https://ipfs.io/ipfs/");
-          Promise.resolve(owner).then((value) => {
-            // console.log("value123", value);
-            let ownerW = value;
-            let meta = {
-              name: name,
-              img: image,
-              tokenId: token,
-              wallet: ownerW,
-              desc,
-            };
-            // console.log(meta);
-            itemArray.push(meta);
-          });
+          if (value) {
+            let rawImg = value.data.image;
+            var name = value.data.name;
+            var desc = value.data.description;
+            let image = rawImg.replace("ipfs://", "https://ipfs.io/ipfs/");
+            Promise.resolve(owner).then((value) => {
+              // console.log("value123", value);
+              let ownerW = value;
+              let meta = {
+                name: name,
+                img: image,
+                tokenId: token,
+                wallet: ownerW,
+                desc,
+              };
+              // console.log(meta);
+              itemArray.push(meta);
+            });
+          }
         });
       }
     });
@@ -649,89 +651,97 @@ export default function Sell() {
                     signer
                   );
 
-                  if (chain !== ("Mumbai Testnet" && "Songbird" && "Polygon")) {
-                    await contractnft
-                      .setApprovalForAll(address, true)
-                      .then(async (res) => {
-                        console.log("res", res);
-                        const filter = {
-                          address: nftcustom,
-                          topics: [
-                            "0x17307eab39ab6107e8899845ad3d59bd9653f200f220920489ca2b5937696c31",
-                          ],
-                        };
-                        provider.on(filter, async (data) => {
-                          console.log("data", data);
-                          const contract = new ethers.Contract(
-                            address,
-                            Market,
-                            signer
-                          );
-                          let listingFee = await contract.getListingFee();
-                          listingFee = listingFee.toString();
-                          let transaction = await contract
-                            .createVaultItem(nftcustom, nft.tokenId, price, {
-                              value: listingFee,
-                            })
-                            .catch((err) => {
-                              console.log("err", err);
-                              setVisible(false);
-                            });
-                          if (!transaction) {
-                            return;
-                          }
-                          await transaction.wait();
-                          router.push("/");
-                        });
-                      })
-                      .catch((err) => {
-                        console.log("err", err);
-                        setVisible(false);
+                  // if (chain !== ("Mumbai Testnet" && "Songbird" && "Polygon")) {
+                  //   await contractnft
+                  //     .setApprovalForAll(address, true)
+                  //     .then(async (res) => {
+                  //       console.log("res", res);
+                  //       const filter = {
+                  //         address: nftcustom,
+                  //         topics: [
+                  //           "0x17307eab39ab6107e8899845ad3d59bd9653f200f220920489ca2b5937696c31",
+                  //         ],
+                  //       };
+                  //       provider.on(filter, async (data) => {
+                  //         console.log("data", data);
+                  //         const contract = new ethers.Contract(
+                  //           address,
+                  //           Market,
+                  //           signer
+                  //         );
+                  //         let listingFee = await contract.getListingFee();
+                  //         listingFee = listingFee.toString();
+                  //         let transaction = await contract
+                  //           .createVaultItem(nftcustom, nft.tokenId, price, {
+                  //             value: listingFee,
+                  //           })
+                  //           .catch((err) => {
+                  //             console.log("err", err);
+                  //             setVisible(false);
+                  //           });
+                  //         if (!transaction) {
+                  //           return;
+                  //         }
+                  //         await transaction.wait();
+                  //         router.push("/");
+                  //       });
+                  //     })
+                  //     .catch((err) => {
+                  //       console.log("err", err);
+                  //       setVisible(false);
+                  //     });
+                  // } else {
+                  await contractnft
+                    .setApprovalForAll(address, true, {
+                      gasPrice: "30000000000",
+                    })
+                    .then(async (res) => {
+                      console.log("res", res);
+                      const filter = {
+                        address: nftcustom,
+                        topics: [
+                          "0x17307eab39ab6107e8899845ad3d59bd9653f200f220920489ca2b5937696c31",
+                        ],
+                      };
+                      provider.on(filter, async (data) => {
+                        console.log("data", data);
+                        const contract = new ethers.Contract(
+                          address,
+                          Market,
+                          signer
+                        );
+                        let listingFee = await contract.getListingFee();
+                        listingFee = listingFee.toString();
+                        let transaction = await contract
+                          .createVaultItem(nftcustom, nft.tokenId, price, {
+                            value: listingFee,
+                            gasPrice: "30000000000",
+                          })
+                          .catch((err) => {
+                            console.log("err", err);
+                            if (
+                              err.data?.message.includes("insufficient funds")
+                            ) {
+                              window.alert(err.data.message);
+                            }
+                            setVisible(false);
+                          });
+                        if (!transaction) {
+                          return;
+                        }
+                        await transaction.wait();
+                        router.push("/");
                       });
-                  } else {
-                    await contractnft
-                      .setApprovalForAll(address, true, {
-                        gasPrice: "30000000000",
-                      })
-                      .then(async (res) => {
-                        console.log("res", res);
-                        const filter = {
-                          address: nftcustom,
-                          topics: [
-                            "0x17307eab39ab6107e8899845ad3d59bd9653f200f220920489ca2b5937696c31",
-                          ],
-                        };
-                        provider.on(filter, async (data) => {
-                          console.log("data", data);
-                          const contract = new ethers.Contract(
-                            address,
-                            Market,
-                            signer
-                          );
-                          let listingFee = await contract.getListingFee();
-                          listingFee = listingFee.toString();
-                          let transaction = await contract
-                            .createVaultItem(nftcustom, nft.tokenId, price, {
-                              value: listingFee,
-                              gasPrice: "30000000000",
-                            })
-                            .catch((err) => {
-                              console.log("err", err);
-                              setVisible(false);
-                            });
-                          if (!transaction) {
-                            return;
-                          }
-                          await transaction.wait();
-                          router.push("/");
-                        });
-                      })
-                      .catch((err) => {
-                        console.log("err", err);
-                        setVisible(false);
-                      });
-                  }
+                    })
+                    .catch((err) => {
+                      console.log("err", err);
+                      if (err.data?.message.includes("insufficient funds")) {
+                        window.alert(err.data.message);
+                      }
+                      setVisible(false);
+                    });
                 }
+                // }
                 return (
                   <Grid key={i}>
                     <a>

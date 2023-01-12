@@ -23,6 +23,8 @@ const BuyListCard = ({
   chainId,
   buyFunction,
   resellContract,
+  setVisible,
+  refresh,
 }) => {
   const handleNetworkSwitch = () => {
     networkSwitch();
@@ -32,8 +34,20 @@ const BuyListCard = ({
     confetti();
   };
 
-  async function cancelListResell(tokenId) {
+  const loaderModalOpen = () => {
     setVisible(true);
+  };
+
+  const loaderModalClose = () => {
+    setVisible(false);
+  };
+
+  const resfreshListing = () => {
+    refresh();
+  };
+
+  async function cancelListResell(tokenId) {
+    loaderModalOpen();
     const web3Modal = new Web3Modal();
     const connection = await web3Modal.connect();
     const provider = new ethers.providers.Web3Provider(connection);
@@ -46,7 +60,7 @@ const BuyListCard = ({
         gasPrice: "30000000000",
       })
       .catch((err) => {
-        setVisible(false);
+        loaderModalClose();
         console.log("err", err.message);
       });
     if (!transaction) {
@@ -54,8 +68,8 @@ const BuyListCard = ({
     }
     await transaction.wait();
     console.log("CANCELLED");
-    refresh();
-    setVisible(false);
+    resfreshListing();
+    loaderModalClose();
   }
 
   return (

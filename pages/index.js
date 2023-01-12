@@ -1853,6 +1853,8 @@ export default function Home() {
                             chainId={"0xE"}
                             buyFunction={buylistNft}
                             resellContract={flrresell}
+                            setVisible={setVisible}
+                            refresh={loadFlareResell}
                           />
                         </Grid>
                       )
@@ -2001,6 +2003,8 @@ export default function Home() {
                             chainId={"0x13"}
                             buyFunction={buylistNft}
                             resellContract={hhresell}
+                            setVisible={setVisible}
+                            refresh={loadHardHatResell}
                           />
                         </Grid>
                       )
@@ -2150,6 +2154,8 @@ export default function Home() {
                             chainId={"0x38"}
                             buyFunction={buylistNft}
                             resellContract={bnbresell}
+                            setVisible={setVisible}
+                            refresh={loadBnbResell}
                           />
                         </Grid>
                       )
@@ -2301,6 +2307,8 @@ export default function Home() {
                             chainId={"0x89"}
                             buyFunction={buylistNft}
                             resellContract={polyresell}
+                            setVisible={setVisible}
+                            refresh={loadPolyResell}
                           />
                         </Grid>
                       )
@@ -2457,6 +2465,8 @@ export default function Home() {
                             chainId={"0x1"}
                             buyFunction={buylistNft}
                             resellContract={ethresell}
+                            setVisible={setVisible}
+                            refresh={loadEthResell}
                           />
                         </Grid>
                       )
@@ -2530,6 +2540,8 @@ export default function Home() {
             </Container>
           </>
         )}
+        <LoadingPopup visible={visible} setVisible={setVisible} />
+
         {/* */}
         {/* <Container sm>
           <Row css={{ marginTop: "$3", marginBottom: "$3" }}>
