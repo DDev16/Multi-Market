@@ -32,12 +32,19 @@ export var flrrpc = "https://songbird.towolabs.com/rpc";*/
 
 /*
 Eth Mainnet
-*/
+
 export var ethresell = "0xD6bEa3f2f34a44DA703f3514b3Ce7aA7EdD19fa0";
 export var ethnftcol = "0xC6e16c3ce24120B70f3967D1b8ad364577F70AAf";
 export var ethnft = "0x6FfF137677FEBee150628E767E926444218aBF9a";
 export var ethmarket = "0x56A7BE395206d86520a326E761DE551A827013DA";
-export var ethrpc = "https://rpc.ankr.com/eth_goerli";
+export var ethrpc = "https://rpc.ankr.com/eth_goerli";*/
+
+export var ethresell = "0x95bE842Cd440e8aA9d5bD93Ec12330c436e5D273";
+export var ethnftcol = "0xEbeB6f34ABFe1BB09F22446a34A489ff97c70411";
+export var ethnft = "0xB72381461f81E4DbF27eAa883E805a0757576eF7";
+export var ethmarket = "0x2Cc9701f59fF7CAe2bad43C8c933A725816157b6";
+export var ethrpc = "https://songbird.towolabs.com/rpc";
+
 
 /*
 Binance Mainnet -- updated addresses 
