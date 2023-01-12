@@ -15,12 +15,19 @@ export var hhrpc = "https://songbird.towolabs.com/rpc";
 
 /*
 Flare Mainnet
-*/ 
-export var flrresell = "0x02d6480848a386384A00FDE469D5C10926E51C67";
-export var flrnftcol = "0x7B6fF7a51a62f6F9dAc586aF1011A973288dEF61";
-export var flrnft = "0xD5d496aa89f94D06c8605aDCd38eD3CA896Df6Fa";
-export var flrmarket = "0xa6BFbefB1FC536b0825eD11996CF148C24054582";
-export var flrrpc = "https://songbird.towolabs.com/rpc";
+*/
+export var flrresell = "0xF1DaD9FA579f0478b2914f1aD8EA6985eEefEe89";
+export var flrnftcol = "0x5d1a74EB382326E3C26322994F905a82e2A33C47";
+export var flrnft = "0x76AB5C8F8f743566908f33500444fA54f383e8C9";
+export var flrmarket = "0xa935a34A8F6e76A6dF06133a01FE8e95BEA52D3d";
+export var flrrpc = "https://flare-api.flare.network/ext/C/rpc";
+
+
+/*export var flrresell = "0x95bE842Cd440e8aA9d5bD93Ec12330c436e5D273";
+export var flrnftcol = "0xEbeB6f34ABFe1BB09F22446a34A489ff97c70411";
+export var flrnft = "0xB72381461f81E4DbF27eAa883E805a0757576eF7";
+export var flrmarket = "0x2Cc9701f59fF7CAe2bad43C8c933A725816157b6";
+export var flrrpc = "https://songbird.towolabs.com/rpc";*/
 
 
 /*

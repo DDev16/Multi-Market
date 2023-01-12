@@ -72,6 +72,13 @@ import {
   polyrpc,
   polymarket,
 } from "../engine/configuration";
+import {
+  flrnft,
+  flrresell,
+  flrnftcol,
+  flrrpc,
+  flrmarket,
+} from "../engine/configuration";
 import image from "../images/image.jpg";
 import LoadingPopup from "../components/LoadingPopup";
 import ListCard from "../components/ListCard";
@@ -103,6 +110,7 @@ export default function Sell() {
     var bsct = "0x61";
     var bnb = "0x38";
     var poly = "0x89";
+    var flr = "0xE";
     const connected = await detectEthereumProvider();
     if (connected.chainId == goe) {
       var mainnet = goerpc;
@@ -116,6 +124,8 @@ export default function Sell() {
       var mainnet = bnbrpc;
     } else if (connected.chainId == poly) {
       var mainnet = polyrpc;
+    } else if (connected.chainId == flr) {
+      var mainnet = flrrpc;
     }
     getRpc(mainnet);
     console.log(mainnet);
@@ -129,6 +139,7 @@ export default function Sell() {
     var bsct = "0x61";
     var bnb = "0x38";
     var poly = "0x89";
+    var flr = "0xE";
     const connected = await detectEthereumProvider();
     if (connected.chainId == goe) {
       var nftcol = goenftcol;
@@ -142,6 +153,8 @@ export default function Sell() {
       var nftcol = bnbnftcol;
     } else if (connected.chainId == poly) {
       var nftcol = polynftcol;
+    } else if (connected.chainId == flr ) {
+      var nftcol = flrnftcol;
     }
     getNftCol(nftcol);
     console.log(nftcol);
@@ -155,6 +168,7 @@ export default function Sell() {
     var bsct = "0x61";
     var bnb = "0x38";
     var poly = "0x89";
+    var flr = "0xE";
     const connected = await detectEthereumProvider();
     if (connected.chainId == goe) {
       var nft = goenft;
@@ -168,6 +182,8 @@ export default function Sell() {
       var nft = bnbnft;
     } else if (connected.chainId == poly) {
       var nft = polynft;
+    } else if (connected.chainId == flr) {
+      var nft = flrnft;
     }
     getNftCustom(nft);
     console.log(nft);
@@ -181,6 +197,7 @@ export default function Sell() {
     var bsct = "0x61";
     var bnb = "0x38";
     var poly = "0x89";
+    var flr = "0xE";
     const connected = await detectEthereumProvider();
     if (connected.chainId == goe) {
       var nft = goemarket;
@@ -194,6 +211,8 @@ export default function Sell() {
       var nft = bnbmarket;
     } else if (connected.chainId == poly) {
       var nft = polymarket;
+    } else if (connected.chainId == flr) {
+      var nft = flrmarket;
     }
     getMarket(nft);
     console.log(nft);
@@ -207,6 +226,7 @@ export default function Sell() {
     var bsct = "0x61";
     var bnb = "0x38";
     var poly = "0x89";
+    var flr = "0xE";
     const connected = await detectEthereumProvider();
     if (connected.chainId == hh) {
       var nftresell = hhresell;
@@ -220,6 +240,8 @@ export default function Sell() {
       var nftresell = bnbresell;
     } else if (connected.chainId == poly) {
       var nftresell = polyresell;
+    } else if (connected.chainId == flr) {
+      var nftresell = flrresell;
     }
     getNftResell(nftresell);
     console.log(nftresell);
@@ -232,6 +254,7 @@ export default function Sell() {
     var bsct = "0x61";
     var bnb = "0x38";
     var poly = "0x89";
+    var flr = "0xE";
     const connected = await detectEthereumProvider();
     if (connected.chainId == hh) {
       var chainname = "Songbird";
@@ -245,6 +268,8 @@ export default function Sell() {
       var chainname = "Binance";
     } else if (connected.chainId == poly) {
       var chainname = "Polygon";
+    } else if (connected.chainId == flr) {
+      var chainname = "Flare";
     }
     getChainName(chainname);
     console.log(chainname);
@@ -693,7 +718,7 @@ export default function Sell() {
                   // } else {
                   await contractnft
                     .setApprovalForAll(address, true, {
-                      gasPrice: "30000000000",
+                      gasPrice: "50000000000",
                     })
                     .then(async (res) => {
                       console.log("res", res);
@@ -715,7 +740,7 @@ export default function Sell() {
                         let transaction = await contract
                           .createVaultItem(nftcustom, nft.tokenId, price, {
                             value: listingFee,
-                            gasPrice: "30000000000",
+                            gasPrice: "50000000000",
                           })
                           .catch((err) => {
                             console.log("err", err);

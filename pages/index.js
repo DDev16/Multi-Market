@@ -1555,7 +1555,7 @@ export default function Home() {
     const transaction = await contract
       .n2DMarketSale(polynft, nft.itemId, {
         value: price,
-        gasPrice: "30000000000",
+        gasPrice: "50000000000",
       })
       .catch((error) => {
         if (error.data?.message.includes("insufficient funds")) {
@@ -1581,8 +1581,8 @@ export default function Home() {
     let contract = new ethers.Contract(polymarket, Market, signer);
     //const gasPrice = signer.getGasPrice();
     let transaction = await contract
-      .cancelSale(itemId, mmnft.toLowerCase(), {
-        gasPrice: "30000000000",
+      .cancelSale(itemId, polynft.toLowerCase(), {
+        gasPrice: "50000000000",
       })
       .catch((err) => {
         setVisible(false);
@@ -1688,11 +1688,11 @@ export default function Home() {
               <div style={{ textAlign: "center", minHeight: "100px" }}>
                 <audio controls style={{ color: "blue" }}>
                   <source
-                    src="./ytmp3free.cc_30-seconds-of-intro-songs-dubstep-stronger-2012-1-youtubemp3free.org (1).mp3"
+                    src="./public/Avicii.mp3"
                     type="audio/mpeg"
                   />
                   <source
-                    src="./ytmp3free.cc_30-seconds-of-intro-songs-dubstep-stronger-2012-1-youtubemp3free.org (1).mp3"
+                    src="./public/Avicii.mp3"
                     type="audio/ogg"
                   />
                   Your browser does not support the audio element.

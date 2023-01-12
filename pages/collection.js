@@ -23,6 +23,9 @@ import {
   hhnftcol,
   hhrpc,
   hhresell,
+  flrrpc,
+  flrresell,
+  flrnftcol,
 } from "../engine/configuration";
 import { bnbrpc, bnbresell, bnbnftcol } from "../engine/configuration";
 import { polyrpc, polyresell, polynftcol } from "../engine/configuration";
@@ -152,7 +155,7 @@ const CustomCard = ({
     const transaction = await contract
       .buyNft(nft.tokenId, {
         value: nft.cost,
-        gasPrice: "40000000000",
+        gasPrice: "50000000000",
       })
       .catch((error) => {
         if (error.data?.message.includes("insufficient funds")) {
@@ -180,7 +183,7 @@ const CustomCard = ({
     // const gasPrice = signer.getGasPrice();
     let transaction = await contract
       .cancelSale(itemId, {
-        gasPrice: "30000000000",
+        gasPrice: "50000000000",
       })
       .catch((err) => {
         setVisible(false);
@@ -414,6 +417,7 @@ const Collection = () => {
     var hh = "0x13"; //songbird conversion
     var bnb = "0x38";
     var poly = "0x89";
+    var flr = "0xE";
     if (activeChain == goe) {
       var nftcol = goenftcol;
       var nftrpc = goerpc;
@@ -438,6 +442,10 @@ const Collection = () => {
       var nftcol = polynftcol;
       var nftrpc = polyrpc;
       var nftresell = polyresell;
+    } else if (activeChain == flr) {
+      var nftcol = flrnftcol;
+      var nftrpc = flrrpc;
+      var nftresell = flrresell;
     }
     setContractConfig({
       nftCol: nftcol,

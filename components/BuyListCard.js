@@ -57,7 +57,7 @@ const BuyListCard = ({
     // const gasPrice = signer.getGasPrice();
     let transaction = await contract
       .cancelSale(tokenId, {
-        gasPrice: "30000000000",
+        gasPrice: "50000000000",
       })
       .catch((err) => {
         loaderModalClose();
