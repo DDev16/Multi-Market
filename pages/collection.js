@@ -417,7 +417,7 @@ const Collection = () => {
     var hh = "0x13"; //songbird conversion
     var bnb = "0x38";
     var poly = "0x89";
-    var flr = "0xE";
+    var flr = "0xe";
     if (activeChain == goe) {
       var nftcol = goenftcol;
       var nftrpc = goerpc;

@@ -110,7 +110,7 @@ export default function Sell() {
     var bsct = "0x61";
     var bnb = "0x38";
     var poly = "0x89";
-    var flr = "0xE";
+    var flr = "0xe";
     const connected = await detectEthereumProvider();
     if (connected.chainId == goe) {
       var mainnet = goerpc;
@@ -139,7 +139,7 @@ export default function Sell() {
     var bsct = "0x61";
     var bnb = "0x38";
     var poly = "0x89";
-    var flr = "0xE";
+    var flr = "0xe";
     const connected = await detectEthereumProvider();
     if (connected.chainId == goe) {
       var nftcol = goenftcol;
@@ -153,7 +153,7 @@ export default function Sell() {
       var nftcol = bnbnftcol;
     } else if (connected.chainId == poly) {
       var nftcol = polynftcol;
-    } else if (connected.chainId == flr ) {
+    } else if (connected.chainId == flr) {
       var nftcol = flrnftcol;
     }
     getNftCol(nftcol);
@@ -168,7 +168,7 @@ export default function Sell() {
     var bsct = "0x61";
     var bnb = "0x38";
     var poly = "0x89";
-    var flr = "0xE";
+    var flr = "0xe";
     const connected = await detectEthereumProvider();
     if (connected.chainId == goe) {
       var nft = goenft;
@@ -197,7 +197,7 @@ export default function Sell() {
     var bsct = "0x61";
     var bnb = "0x38";
     var poly = "0x89";
-    var flr = "0xE";
+    var flr = "0xe";
     const connected = await detectEthereumProvider();
     if (connected.chainId == goe) {
       var nft = goemarket;
@@ -226,7 +226,7 @@ export default function Sell() {
     var bsct = "0x61";
     var bnb = "0x38";
     var poly = "0x89";
-    var flr = "0xE";
+    var flr = "0xe";
     const connected = await detectEthereumProvider();
     if (connected.chainId == hh) {
       var nftresell = hhresell;
@@ -254,7 +254,7 @@ export default function Sell() {
     var bsct = "0x61";
     var bnb = "0x38";
     var poly = "0x89";
-    var flr = "0xE";
+    var flr = "0xe";
     const connected = await detectEthereumProvider();
     if (connected.chainId == hh) {
       var chainname = "Songbird";
@@ -676,97 +676,98 @@ export default function Sell() {
                     signer
                   );
 
-                  // if (chain !== ("Mumbai Testnet" && "Songbird" && "Polygon")) {
-                  //   await contractnft
-                  //     .setApprovalForAll(address, true)
-                  //     .then(async (res) => {
-                  //       console.log("res", res);
-                  //       const filter = {
-                  //         address: nftcustom,
-                  //         topics: [
-                  //           "0x17307eab39ab6107e8899845ad3d59bd9653f200f220920489ca2b5937696c31",
-                  //         ],
-                  //       };
-                  //       provider.on(filter, async (data) => {
-                  //         console.log("data", data);
-                  //         const contract = new ethers.Contract(
-                  //           address,
-                  //           Market,
-                  //           signer
-                  //         );
-                  //         let listingFee = await contract.getListingFee();
-                  //         listingFee = listingFee.toString();
-                  //         let transaction = await contract
-                  //           .createVaultItem(nftcustom, nft.tokenId, price, {
-                  //             value: listingFee,
-                  //           })
-                  //           .catch((err) => {
-                  //             console.log("err", err);
-                  //             setVisible(false);
-                  //           });
-                  //         if (!transaction) {
-                  //           return;
-                  //         }
-                  //         await transaction.wait();
-                  //         router.push("/");
-                  //       });
-                  //     })
-                  //     .catch((err) => {
-                  //       console.log("err", err);
-                  //       setVisible(false);
-                  //     });
-                  // } else {
-                  await contractnft
-                    .setApprovalForAll(address, true, {
-                      gasPrice: "50000000000",
-                    })
-                    .then(async (res) => {
-                      console.log("res", res);
-                      const filter = {
-                        address: nftcustom,
-                        topics: [
-                          "0x17307eab39ab6107e8899845ad3d59bd9653f200f220920489ca2b5937696c31",
-                        ],
-                      };
-                      provider.on(filter, async (data) => {
-                        console.log("data", data);
-                        const contract = new ethers.Contract(
-                          address,
-                          Market,
-                          signer
-                        );
-                        let listingFee = await contract.getListingFee();
-                        listingFee = listingFee.toString();
-                        let transaction = await contract
-                          .createVaultItem(nftcustom, nft.tokenId, price, {
-                            value: listingFee,
-                            gasPrice: "50000000000",
-                          })
-                          .catch((err) => {
-                            console.log("err", err);
-                            if (
-                              err.data?.message.includes("insufficient funds")
-                            ) {
-                              window.alert(err.data.message);
-                            }
-                            setVisible(false);
-                          });
-                        if (!transaction) {
-                          return;
-                        }
-                        await transaction.wait();
-                        router.push("/");
+                  if (chain == "Binance") {
+                    await contractnft
+                      .setApprovalForAll(address, true, {
+                      })
+                      .then(async (res) => {
+                        console.log("res1", res);
+                        const filter = {
+                          address: nftcustom,
+                          topics: [
+                            "0x17307eab39ab6107e8899845ad3d59bd9653f200f220920489ca2b5937696c31",
+                          ],
+                        };
+                        provider.on(filter, async (data) => {
+                          console.log("data", data);
+                          const contract = new ethers.Contract(
+                            address,
+                            Market,
+                            signer
+                          );
+                          let listingFee = await contract.getListingFee();
+                          listingFee = listingFee.toString();
+                          let transaction = await contract
+                            .createVaultItem(nftcustom, nft.tokenId, price, {
+                              value: listingFee,
+                            })
+                            .catch((err) => {
+                              console.log("err", err);
+                              setVisible(false);
+                            });
+                          if (!transaction) {
+                            return;
+                          }
+                          await transaction.wait();
+                          router.push("/");
+                        });
+                      })
+                      .catch((err) => {
+                        console.log("err", err);
+                        setVisible(false);
                       });
-                    })
-                    .catch((err) => {
-                      console.log("err", err);
-                      if (err.data?.message.includes("insufficient funds")) {
-                        window.alert(err.data.message);
-                      }
-                      setVisible(false);
-                    });
+                  } else {
+                    await contractnft
+                      .setApprovalForAll(address, true, {
+                        gasPrice: "50000000000",
+                      })
+                      .then(async (res) => {
+                        console.log("res", res);
+                        const filter = {
+                          address: nftcustom,
+                          topics: [
+                            "0x17307eab39ab6107e8899845ad3d59bd9653f200f220920489ca2b5937696c31",
+                          ],
+                        };
+                        provider.on(filter, async (data) => {
+                          console.log("data", data);
+                          const contract = new ethers.Contract(
+                            address,
+                            Market,
+                            signer
+                          );
+                          let listingFee = await contract.getListingFee();
+                          listingFee = listingFee.toString();
+                          let transaction = await contract
+                            .createVaultItem(nftcustom, nft.tokenId, price, {
+                              value: listingFee,
+                              gasPrice: "50000000000",
+                            })
+                            .catch((err) => {
+                              console.log("err", err);
+                              if (
+                                err.data?.message.includes("insufficient funds")
+                              ) {
+                                window.alert(err.data.message);
+                              }
+                              setVisible(false);
+                            });
+                          if (!transaction) {
+                            return;
+                          }
+                          await transaction.wait();
+                          router.push("/");
+                        });
+                      })
+                      .catch((err) => {
+                        console.log("err", err);
+                        if (err.data?.message.includes("insufficient funds")) {
+                          window.alert(err.data.message);
+                        }
+                        setVisible(false);
+                      });
+                  }
                 }
-                // }
                 return (
                   <Grid key={i}>
                     <a>

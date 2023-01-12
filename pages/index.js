@@ -1850,7 +1850,7 @@ export default function Home() {
                             networkSwitch={flrChain}
                             chain={"Flare"}
                             connectedWallet={connectedWallet}
-                            chainId={"0xE"}
+                            chainId={"0xe"}
                             buyFunction={buylistNft}
                             resellContract={flrresell}
                             setVisible={setVisible}
@@ -1900,7 +1900,7 @@ export default function Home() {
                             networkSwitch={flrChain}
                             chain={"Flare"}
                             connectedWallet={connectedWallet}
-                            chainId={"0xE"}
+                            chainId={"0xe"}
                             buyFunction={buyNewFlr}
                             cancelFunction={flrCancelList}
                           />
@@ -1918,7 +1918,7 @@ export default function Home() {
                               networkSwitch={flrChain}
                               chain={"Flare"}
                               connectedWallet={connectedWallet}
-                              chainId={"0xE"}
+                              chainId={"0xe"}
                               buyFunction={buyNewFlr}
                               cancelFunction={flrCancelList}
                             />

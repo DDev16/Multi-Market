@@ -46,7 +46,7 @@ export var bnbresell = "0xc7A30d15Fe24032b8b700c0dCf71400Df3b92970";
 export var bnbnftcol = "0x382d4b1e396c6666640cc628b89ee0f5aec14994";
 export var bnbnft = "0x51A1c8956c038699423ab7A0726d7311c81f6F8f";
 export var bnbmarket = "0x33B3E5cF732CeE31a5f59243a54C490b90e9997F";
-export var bnbrpc = "https://bsc-dataseed2.defibit.io";
+export var bnbrpc = "https://bsc-dataseed1.defibit.io";
 
 
 /*

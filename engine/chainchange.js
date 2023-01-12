@@ -174,7 +174,7 @@ export async function flrChain() {
     try {
         await ethereum.request({
             method: 'wallet_switchEthereumChain',
-            params: [{ chainId: '0xE' }],
+            params: [{ chainId: '0xe' }],
         });
     } catch (switchError) {
         if (switchError.code === 4902) {
@@ -182,7 +182,7 @@ export async function flrChain() {
                 await window.ethereum.request({
                     method: 'wallet_addEthereumChain',
                     params: [{
-                        chainId: '0xE',
+                        chainId: '0xe',
                         chainName: 'Flare',
                         nativeCurrency: {
                             name: 'FLR',
