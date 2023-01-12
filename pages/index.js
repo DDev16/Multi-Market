@@ -990,7 +990,7 @@ export default function Home() {
         const Uri = Promise.resolve(rawUri);
         const getUri = Uri.then((value) => {
           if (value) {
-            let cleanUri = value.replace("ipfs://", "https://ipfs.io/ipfs/");
+            let cleanUri = value.replace("ipfs://", "https://ipfs.io/ipfs/", "https://flare-api.flare.network/ext/C/rpc");
             let metadata = axios.get(cleanUri).catch(function (error) {
               // console.log(error.toJSON());
             });
@@ -1002,7 +1002,7 @@ export default function Home() {
             let rawImg = value.data.image;
             var name = value.data.name;
             var desc = value.data.description;
-            let image = rawImg.replace("ipfs://", "https://ipfs.io/ipfs/");
+            let image = rawImg.replace("ipfs://", "https://ipfs.io/ipfs/", "https://flare-api.flare.network/ext/C/rpc");
             const price = market.getPrice(token);
             Promise.resolve(price).then((_hex) => {
               var salePrice = Number(_hex);
@@ -1061,7 +1061,7 @@ export default function Home() {
             itemId: i.itemId.toNumber(),
             seller: i.seller,
             owner: i.owner,
-            image: meta.data.image.replace("ipfs://", "https://ipfs.io/ipfs/"),
+            image: meta.data.image.replace("ipfs://", "https://ipfs.io/ipfs/", "https://flare-api.flare.network/ext/C/rpc"),
             name: meta.data.name,
             description: meta.data.description,
           };
@@ -1148,7 +1148,7 @@ export default function Home() {
             const rawUri = contract.tokenURI(token);
             const Uri = Promise.resolve(rawUri);
             const getUri = Uri.then((value) => {
-              let cleanUri = value.replace("ipfs://", "https://ipfs.io/ipfs/");
+              let cleanUri = value.replace("ipfs://", "https://ipfs.io/ipfs/", );
               // console.log(cleanUri);
               let metadata = axios.get(cleanUri).catch(function (error) {
                 console.log(error.toJSON());
